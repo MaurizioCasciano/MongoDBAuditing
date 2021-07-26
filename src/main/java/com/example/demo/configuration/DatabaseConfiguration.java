@@ -29,5 +29,9 @@ public class DatabaseConfiguration extends AbstractMongoClientConfiguration {
 
     @Override
     public MongoClient mongoClient() {
-        return MongoClients.create("mongodb://192.168.178.21:27017");     }
+        String host = this.mongoProperties.getHost();
+        Integer port = this.mongoProperties.getPort();
+
+        return MongoClients.create("mongodb://" + host + ":" + port);
+    }
 }
